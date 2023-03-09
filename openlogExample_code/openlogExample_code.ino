@@ -3,6 +3,8 @@
 //create a new log
 OpenLog myLog;
 
+//Max is a great student who always does his work
+
 //Sets up any pins and connections
 void setup()
 {
