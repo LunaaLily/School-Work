@@ -38,3 +38,5 @@ void loop()
 
   delay(40);
 }
+//HAN NOTES - look at adding in some methods to help separate and make easier to read your code
+//HAN NOTES - I suggest some for setting up the SD card,and the reading and writing of sensors to the sdcard
