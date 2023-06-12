@@ -15,10 +15,11 @@ void setup()
   theSensor.begin(); 
   myLog.begin();
 
-  //HAN NOTES what does this if statement do?
-  if (theSensor.isConnected() == false) /
+  
+  //If the sensor is not connected it will present an error message.
+  if (theSensor.isConnected() == false) 
   {
-    Serial.println("LPS25HB disconnected. Reset the board to try again.");     
+    Serial.println("The black sensor is disconnected. Reset the board to try again.");     
   }
 //HAN NOTES what is myFile? should it be setup somewhere?
    myLog.append(myFile);
@@ -26,6 +27,7 @@ void setup()
 }
 
 //HAN NOTES add a comment about the method here
+//Fetches the temperature from the temperature sensor and responds back with the result.
 void loop()
 {
 
