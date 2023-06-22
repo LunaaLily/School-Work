@@ -5,6 +5,7 @@
 OpenLog sdCard;
 LPS25HB theSensor;
 
+//creates a file under the variable myFile called "MaxsFile.txt"
 String myFile = "MaxsFile.txt";
 
 //Sets up a connection to the arduino board and also sets up a connection from the arduino board to the temperature sesnor and SD card.
@@ -21,7 +22,7 @@ void setup()
   {
     Serial.println("The black sensor is disconnected. Reset the board to try again.");
   }
-  //allows the SD card to access my file and sends a message to the file in the SD card.
+  //moves my file to the SD card and sends a message to the file in the SD card.
   sdCard.append(myFile);
   sdCard.println("Pressure, Temperature");
 }
