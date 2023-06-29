@@ -5,13 +5,15 @@
 OpenLog sdCard;
 LPS25HB theSensor;
 
-//creates a file under the variable myFile called "MaxsFile.txt"
+//creates a file under the variable myFile called "MaxsFile.txt" and sets up the constant SBEGIN as 9600
 String myFile = "MaxsFile.txt";
+const int SBEGIN = 9600;
 
 //Sets up a connection to the arduino board and also sets up a connection from the arduino board to the temperature sesnor and SD card.
 void setup()
 {
-  Serial.begin(9600);
+
+  Serial.begin(SBEGIN);
   Wire.begin();
   theSensor.begin();
   sdCard.begin();
@@ -30,31 +32,22 @@ void setup()
 //Fetches the temperature and pressure from the temperature sensor and responds back with the result on the SD card and serial.
 void loop()
 {
+  //Set testing to either true or false.
+  recieveResult(true);
+}
 
-ifTesting = (True)
-  Serial.print("The pressure is (), and the temperature is (). ");
-  Serial.print(theSensor.getPressure_hPa());
-  Serial.println(theSensor.getTemperature_degC());
-
-  sdCard.print(theSensor.getPressure_hPa());
-  sdCard.print(", ");
-  sdCard.println(theSensor.getTemperature_degC());
-
-  delay(40);
-
-  // Add method here, notes: Void Test method, (make own name, Boolean, ifTesting true, (Print temperature/pressure stuff copy paste lines, else similar code
-
-  void recieveResult (boolean ifTesting) {
-
-  Serial.print("The pressure is (), and the temperature is (). ");
-  Serial.print(theSensor.getPressure_hPa());
-  Serial.println(theSensor.getTemperature_degC());
-
-  sdCard.print(theSensor.getPressure_hPa());
-  sdCard.print(", ");
-  sdCard.println(theSensor.getTemperature_degC());
-
-  else {
+//If I am testing I will recieve results from the serial, if not I will recieve results from the sd card.
+void recieveResult (boolean ifTesting) {
+  if (ifTesting) {
+    Serial.print("The pressure is ");
+    Serial.print(theSensor.getPressure_hPa());
+    Serial.print(", and the temperature is ");
+    Serial.print(theSensor.getTemperature_degC());
+    Serial.println(". ");
+  } else {
+    sdCard.print(theSensor.getPressure_hPa());
+    sdCard.print(", ");
+    sdCard.println(theSensor.getTemperature_degC());
   }
 }
 //HAN NOTES - look at adding in some methods to help separate and make easier to read your code
