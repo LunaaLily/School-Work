@@ -32,7 +32,7 @@ void setup()
 //Fetches the temperature and pressure from the temperature sensor and responds back with the result on the SD card and serial.
 void loop()
 {
-  //Set testing to either true or false.
+  //Set testing to either true or false. //HAN NOTES what will these values do?
   recieveResult(true);
 }
 
@@ -50,5 +50,3 @@ void recieveResult (boolean ifTesting) {
     sdCard.println(theSensor.getTemperature_degC());
   }
 }
-//HAN NOTES - look at adding in some methods to help separate and make easier to read your code
-//HAN NOTES - I suggest some for setting up the SD card,and the reading and writing of sensors to the sdcard
