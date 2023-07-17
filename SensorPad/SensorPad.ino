@@ -33,7 +33,7 @@ void setup()
 //Fetches the temperature and pressure from the temperature sensor and responds back with the result on the SD card and serial.
 void loop()
 {
-  //Set testing to either true or false. //HAN NOTES what will these values do?
+  //Set testing to either true or false, which will allow the code bellow to recieve specific results depending on if testing is set to true or false.
   recieveResult(true);
 }
 
