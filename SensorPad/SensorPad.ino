@@ -12,12 +12,10 @@ const int SBEGIN = 9600;
 //Sets up a connection to the arduino board and also sets up a connection from the arduino board to the temperature sesnor and SD card.
 void setup()
 {
-
   Serial.begin(SBEGIN);
   Wire.begin();
   theSensor.begin();
   sdCard.begin();
-
 
   //If the sensor is not connected it will present an error message.
   if (theSensor.isConnected() == false)
@@ -27,7 +25,7 @@ void setup()
   //moves my file to the SD card and sends a message to the file in the SD card and creates a heading.
   sdCard.append(myFile);
   sdCard.println("Pressure, Temperature");
-  //HAN NOTES *hint* do you want to sync things now?
+  //HAN NOTES what does syncFile do?
  sdCard.syncFile();
 }
 
@@ -40,13 +38,13 @@ void loop()
 
 //If I am testing I will recieve results from the serial, if not I will recieve results from the sd card.
 void recieveResult (boolean ifTesting) {
-  if (ifTesting) {
+  if (ifTesting) {//HAN NOTES add a clear comment about if this is the true or false section
     Serial.print("The pressure is ");
     Serial.print(theSensor.getPressure_hPa());
     Serial.print(", and the temperature is ");
     Serial.print(theSensor.getTemperature_degC());
     Serial.println(". ");
-  } else {
+  } else {//HAN NOTES add a clear comment about if this is the true or false section
     sdCard.print(theSensor.getPressure_hPa());
     sdCard.print(", ");
     sdCard.println(theSensor.getTemperature_degC());
