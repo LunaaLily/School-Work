@@ -28,6 +28,7 @@ void setup()
   sdCard.append(myFile);
   sdCard.println("Pressure, Temperature");
   //HAN NOTES *hint* do you want to sync things now?
+ sdCard.syncFile();
 }
 
 //Fetches the temperature and pressure from the temperature sensor and responds back with the result on the SD card and serial.
@@ -49,6 +50,6 @@ void recieveResult (boolean ifTesting) {
     sdCard.print(theSensor.getPressure_hPa());
     sdCard.print(", ");
     sdCard.println(theSensor.getTemperature_degC());
-    //HAN NOTES *hint* do you want to sync things now?
+    sdCard.syncFile();
   }
 }
