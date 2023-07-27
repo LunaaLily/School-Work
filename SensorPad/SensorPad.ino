@@ -25,7 +25,7 @@ void setup()
   //moves my file to the SD card and sends a message to the file in the SD card and creates a heading.
   sdCard.append(myFile);
   sdCard.println("Pressure, Temperature");
-  //HAN NOTES what does syncFile do?
+  //Syncs the file to the SDcard so that no further action will be made until the file is properly synced
  sdCard.syncFile();
 }
 
@@ -38,13 +38,13 @@ void loop()
 
 //If I am testing I will recieve results from the serial, if not I will recieve results from the sd card.
 void recieveResult (boolean ifTesting) {
-  if (ifTesting) {//HAN NOTES add a clear comment about if this is the true or false section
+  if (ifTesting) {//If I am testing (set to true), it will activate the results within the serial monitor through this code
     Serial.print("The pressure is ");
     Serial.print(theSensor.getPressure_hPa());
     Serial.print(", and the temperature is ");
     Serial.print(theSensor.getTemperature_degC());
     Serial.println(". ");
-  } else {//HAN NOTES add a clear comment about if this is the true or false section
+  } else {//If i am not testing (set to false), It will activate the results within the SDcard through this code
     sdCard.print(theSensor.getPressure_hPa());
     sdCard.print(", ");
     sdCard.println(theSensor.getTemperature_degC());
